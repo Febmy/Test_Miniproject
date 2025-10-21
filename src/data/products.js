@@ -1,0 +1,42 @@
+export const products = [
+  {
+    id: 1,
+    name: "Air Zoom Pegasus 40",
+    brand: "Nike",
+    category: "Running",
+    price: 1699000,
+    image: "https://via.placeholder.com/400x300?text=Pegasus+40",
+  },
+  {
+    id: 2,
+    name: "Ultraboost Light",
+    brand: "Adidas",
+    category: "Running",
+    price: 2999000,
+    image: "https://via.placeholder.com/400x300?text=Ultraboost+Light",
+  },
+  {
+    id: 3,
+    name: "Gel-Kayano 30",
+    brand: "ASICS",
+    category: "Stability",
+    price: 2799000,
+    image: "https://via.placeholder.com/400x300?text=Gel-Kayano+30",
+  },
+  {
+    id: 4,
+    name: "Fresh Foam 1080",
+    brand: "New Balance",
+    category: "Cushion",
+    price: 2599000,
+    image: "https://via.placeholder.com/400x300?text=Fresh+Foam+1080",
+  },
+  {
+    id: 5,
+    name: "Clifton 9",
+    brand: "HOKA",
+    category: "Daily Trainer",
+    price: 2399000,
+    image: "https://via.placeholder.com/400x300?text=Clifton+9",
+  },
+];

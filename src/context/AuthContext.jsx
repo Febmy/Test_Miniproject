@@ -1,49 +1,55 @@
-import { createContext, useContext, useMemo } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
-import { loginReqres, registerReqres } from "../services/reqres";
-import { parseAxiosError } from "../services/api";
+import { createContext, useContext, useState } from "react";
+import { loginReqres } from "../routes/api/reqres";
 
-const AuthCtx = createContext(null);
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [auth, setAuth] = useLocalStorage("auth", null);
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [user, setUser] = useState(() => {
+    const raw = localStorage.getItem("user");
+    return raw ? JSON.parse(raw) : null;
+  });
+  const [loading, setLoading] = useState(false);
 
-  async function login(email, password) {
+  const isAuthenticated = !!token;
+
+  const login = async (email, password) => {
+    setLoading(true);
     try {
-      const { token } = await loginReqres({ email, password });
-      setAuth({ token, email });
+      const data = await loginReqres({ email, password });
+      const t = data.token;
+      setToken(t);
+      localStorage.setItem("token", t);
+      const u = { email };
+      setUser(u);
+      localStorage.setItem("user", JSON.stringify(u));
       return { ok: true };
-    } catch (e) {
-      return { ok: false, error: parseAxiosError(e) };
+    } catch (err) {
+      console.error(err);
+      return {
+        ok: false,
+        message: err?.response?.data?.error || err.message || "Login failed",
+      };
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
-  async function register(email, password) {
-    try {
-      const { token } = await registerReqres({ email, password });
-      setAuth({ token, email });
-      return { ok: true };
-    } catch (e) {
-      return { ok: false, error: parseAxiosError(e) };
-    }
-  }
+  const logout = () => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  };
 
-  function logout() {
-    setAuth(null);
-  }
-
-  const value = useMemo(
-    () => ({
-      user: auth,
-      isAuthenticated: !!auth?.token,
-      login,
-      register,
-      logout,
-    }),
-    [auth]
-  );
-
-  return <AuthCtx.Provider value={value}>{children}</AuthCtx.Provider>;
+  const value = { token, user, isAuthenticated, login, logout, loading };
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export const useAuth = () => useContext(AuthCtx);
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error("useAuth must be used within AuthProvider");
+  return ctx;
+}
+
+export default AuthContext;

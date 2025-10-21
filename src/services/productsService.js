@@ -1,4 +1,4 @@
-import data from "../data/products.json";
+import data from "../data/products";
 export async function getAllProducts() {
   return Promise.resolve(data);
 }

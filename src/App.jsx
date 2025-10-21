@@ -1,21 +1,32 @@
-import Navbar from "./components/Navbar.jsx";
-import Footer from "./components/Footer.jsx";
-import RoutesRoot from "./routes/index.jsx";
-import { CartProvider } from "./context/CartContext.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Products from "./pages/Products";
+import Users from "./pages/Users";
+import Dashboard from "./pages/Dashboard";
+import NotFound from "./pages/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <div className="min-h-screen flex flex-col bg-white">
-          <Navbar />
-          <main className="flex-1">
-            <RoutesRoot />
-          </main>
-          <Footer />
-        </div>
-      </CartProvider>
-    </AuthProvider>
+    <>
+      <Navbar />
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Private */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/products" element={<Products />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
