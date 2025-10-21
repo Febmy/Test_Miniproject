@@ -1,0 +1,72 @@
+{
+  "features": [
+    {
+      "title": "Best Quality Shoes",
+      "desc": "Industry-standard build for everyday comfort.",
+      "image": "/assets/images/ico-quality.svg"
+    },
+    {
+      "title": "Long Lasting Shoes",
+      "desc": "Durable outsole & reinforced upper.",
+      "image": "/assets/images/ico-durable.svg"
+    },
+    {
+      "title": "Best Price Range",
+      "desc": "Value-focused lineup with great specs.",
+      "image": "/assets/images/ico-price.svg"
+    }
+  ],
+  "collections": [
+    "/assets/images/col-1.jpg",
+    "/assets/images/col-2.jpg",
+    "/assets/images/col-3.jpg",
+    "/assets/images/col-4.jpg",
+    "/assets/images/col-5.jpg",
+    "/assets/images/col-6.jpg"
+  ],
+  "testimonials": [
+    {
+      "avatar": "/assets/images/ava-1.jpg",
+      "name": "Scarlett Thomas",
+      "location": "Singapore",
+      "text": "Comfortable for city walks and travel."
+    },
+    {
+      "avatar": "/assets/images/ava-2.jpg",
+      "name": "Sophie Lincon",
+      "location": "Sidney",
+      "text": "Lightweight but supportive—love them!"
+    },
+    {
+      "avatar": "/assets/images/ava-3.jpg",
+      "name": "Michelle Girou",
+      "location": "Paris",
+      "text": "My go-to pair for daily errands."
+    },
+    {
+      "avatar": "/assets/images/ava-4.jpg",
+      "name": "Julia De Santis",
+      "location": "Venecia",
+      "text": "Stylish and comfy, great value."
+    },
+    {
+      "avatar": "/assets/images/ava-5.jpg",
+      "name": "Aitana Ferrer",
+      "location": "Ibiza",
+      "text": "Perfect for summer trips."
+    },
+    {
+      "avatar": "/assets/images/ava-6.jpg",
+      "name": "Andrea Peralta",
+      "location": "Buenos Aires",
+      "text": "Great cushioning on long days."
+    }
+  ],
+  "about": {
+    "title": "We provide high quality footwear",
+    "paragraphs": [
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+      "It was popularised in the 1960s with the release of Letraset sheets..."
+    ]
+  }
+}

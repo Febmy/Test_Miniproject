@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "name": "Stride Runner",
+    "category": "Running",
+    "price": 129.99,
+    "image": "/assets/images/p1.jpg",
+    "description": "Lightweight daily trainer."
+  },
+  {
+    "id": "2",
+    "name": "Core Trainer",
+    "category": "Training",
+    "price": 99.99,
+    "image": "/assets/images/p2.jpg",
+    "description": "Stable base for the gym."
+  },
+  {
+    "id": "3",
+    "name": "City Walk",
+    "category": "Lifestyle",
+    "price": 79.99,
+    "image": "/assets/images/p3.jpg",
+    "description": "Comfort-first casual."
+  }
+]
